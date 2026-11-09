@@ -1,0 +1,13 @@
+.devcerts/
+.env
+**/.env
+*.db
+*.log
+__pycache__/
+*.pyc
+node_modules/
+.next/
+*.tsbuildinfo
+.venv/
+venv/
+.pytest_cache/

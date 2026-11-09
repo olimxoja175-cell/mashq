@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+/* WORLDVOICE design tokens — navy, white, restrained gold */
+@theme {
+  --color-navy-950: #060c1a;
+  --color-navy-900: #0a1428;
+  --color-navy-850: #0d1931;
+  --color-navy-800: #111f3b;
+  --color-navy-700: #1a2b4d;
+  --color-navy-600: #263b63;
+  --color-navy-400: #6d80a6;
+  --color-navy-300: #9aa9c7;
+  --color-gold-300: #e6d2a0;
+  --color-gold-400: #d6b978;
+  --color-gold-500: #c5a35a;
+  --color-gold-600: #a8853f;
+  --color-ivory: #f5f2ea;
+  --color-success: #4fb38a;
+  --color-warning: #e0a83a;
+  --color-danger: #d4574e;
+  --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --font-sans: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+}
+
+html,
+body {
+  background: var(--color-navy-950);
+  color: var(--color-ivory);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-image: radial-gradient(1200px 600px at 80% -10%, rgba(197, 163, 90, 0.07), transparent 60%),
+    radial-gradient(900px 500px at -10% 110%, rgba(38, 59, 99, 0.35), transparent 60%);
+  min-height: 100vh;
+}
+
+::selection {
+  background: rgba(197, 163, 90, 0.35);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold-400);
+  outline-offset: 2px;
+}
+
+.gold-rule {
+  background: linear-gradient(90deg, transparent, var(--color-gold-500), transparent);
+  height: 1px;
+}
+
+.panel {
+  background: linear-gradient(180deg, rgba(17, 31, 59, 0.92), rgba(13, 25, 49, 0.92));
+  border: 1px solid var(--color-navy-700);
+  border-radius: 14px;
+}
+
+.pulse-dot {
+  animation: wvpulse 1.8s ease-in-out infinite;
+}
+@keyframes wvpulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+.speaking-ring {
+  box-shadow: 0 0 0 3px var(--color-gold-400), 0 0 28px rgba(214, 185, 120, 0.35);
+}
+
+input[type="range"] {
+  accent-color: var(--color-gold-500);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse-dot { animation: none; }
+}

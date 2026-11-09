@@ -1,0 +1,16 @@
+# TLS termination + single origin for the browser (cookies stay first-party, WebSocket on the same host).
+{$WV_DOMAIN:localhost} {
+	encode zstd gzip
+	header {
+		Strict-Transport-Security "max-age=63072000; includeSubDomains"
+		Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' data: blob:; connect-src 'self' wss://{$WV_DOMAIN:localhost}; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+		-Server
+	}
+	@api path /api/* /ws/*
+	handle @api {
+		reverse_proxy backend:8000
+	}
+	handle {
+		reverse_proxy frontend:3000
+	}
+}
